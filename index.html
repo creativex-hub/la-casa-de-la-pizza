@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>La Casa de la Pizza</title>
+    <title>Menú | La Casa de la Pizza</title>
 
     <style>
-
         * {
             margin: 0;
             padding: 0;
@@ -20,128 +18,118 @@
             color: #3b1f12;
         }
 
-
-        /* =========================
-           ENCABEZADO
-        ========================= */
-
+        /* ENCABEZADO */
         header {
             background: linear-gradient(135deg, #e85c0c, #f47721);
             color: white;
             text-align: center;
-            padding: 45px 20px 55px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            padding: 35px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
         }
 
         header img {
-            width: 125px;
-            height: 125px;
+            width: 110px;
+            height: 110px;
             object-fit: cover;
             border-radius: 50%;
             border: 5px solid white;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         header h1 {
-            font-size: 42px;
-            margin-bottom: 10px;
+            font-size: 36px;
+            margin-bottom: 8px;
         }
 
         header p {
-            font-size: 19px;
+            font-size: 17px;
             opacity: 0.95;
         }
 
-
-        /* =========================
-           BOTONES PRINCIPALES
-        ========================= */
-
-        .botones-header {
-            margin-top: 25px;
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .boton {
+        /* BOTÓN VOLVER */
+        .volver {
             display: inline-block;
-            padding: 13px 24px;
-            border-radius: 30px;
+            margin-top: 20px;
+            padding: 11px 22px;
+            background: white;
+            color: #e85c0c;
             text-decoration: none;
+            border-radius: 25px;
             font-weight: bold;
             transition: 0.3s;
         }
 
-        .boton-menu {
-            background: white;
-            color: #e85c0c;
+        .volver:hover {
+            transform: scale(1.05);
+            background: #fff3df;
         }
 
-        .boton-whatsapp {
-            background: #25D366;
+        /* CATEGORÍAS */
+        .categorias {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 30px 20px 10px;
+            flex-wrap: wrap;
+        }
+
+        .categoria {
+            border: none;
+            padding: 14px 30px;
+            border-radius: 30px;
+            background: white;
+            color: #e85c0c;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+            transition: 0.3s;
+        }
+
+        .categoria:hover {
+            transform: translateY(-2px);
+        }
+
+        .categoria.activo {
+            background: #e85c0c;
             color: white;
         }
 
-        .boton:hover {
-            transform: translateY(-3px) scale(1.03);
+        /* CONTENIDO */
+        .contenido {
+            display: none;
+            max-width: 1250px;
+            margin: 30px auto;
+            padding: 0 20px 50px;
         }
 
-
-        /* =========================
-           BIENVENIDA
-        ========================= */
-
-        .bienvenida {
-            max-width: 1000px;
-            margin: 50px auto;
-            padding: 0 20px;
-            text-align: center;
+        .contenido.activo {
+            display: block;
         }
 
-        .bienvenida h2 {
-            color: #d94d0b;
-            font-size: 32px;
-            margin-bottom: 15px;
-        }
-
-        .bienvenida p {
-            color: #6b4a3a;
-            font-size: 17px;
-            line-height: 1.7;
-        }
-
-
-        /* =========================
-           PIZZAS DESTACADAS
-        ========================= */
-
-        .destacadas {
-            max-width: 1150px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
-
-        .destacadas h2 {
+        .titulo-seccion {
             text-align: center;
             color: #d94d0b;
-            font-size: 32px;
+            font-size: 30px;
             margin-bottom: 30px;
         }
 
-        .pizza-grid {
+        /* GRID: SIEMPRE 3 EN 3 */
+        .menu-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 25px;
         }
 
+        /* TARJETA PIZZA */
         .pizza-card {
             background: white;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 6px 18px rgba(0,0,0,0.10);
             transition: 0.3s;
+            display: flex;
+            flex-direction: column;
         }
 
         .pizza-card:hover {
@@ -151,14 +139,30 @@
 
         .pizza-card img {
             width: 100%;
-            height: 230px;
+            height: 220px;
             object-fit: cover;
             display: block;
         }
 
+        /* SIN FOTO */
+        .sin-foto {
+            height: 220px;
+            background: linear-gradient(135deg, #fff0d9, #ffe0bd);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 25px;
+            color: #e85c0c;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
         .pizza-info {
             padding: 20px;
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
 
         .pizza-info h3 {
@@ -168,335 +172,380 @@
         }
 
         .pizza-info p {
-            color: #795548;
+            color: #6b4a3a;
+            font-size: 14px;
             line-height: 1.5;
+            min-height: 43px;
             margin-bottom: 15px;
         }
 
-        .ver-menu {
-            display: inline-block;
+        /* PRECIOS */
+        .precios {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .precio {
+            background: #fff3df;
+            border-radius: 10px;
+            padding: 9px 5px;
+            text-align: center;
+        }
+
+        .precio span {
+            display: block;
+            font-size: 12px;
+            color: #795548;
+            margin-bottom: 3px;
+        }
+
+        .precio strong {
+            color: #d94d0b;
+            font-size: 17px;
+        }
+
+        /* PEDIR */
+        .btn-pedir {
+            display: block;
+            text-align: center;
             background: #e85c0c;
             color: white;
             text-decoration: none;
-            padding: 10px 18px;
+            padding: 11px;
             border-radius: 12px;
             font-weight: bold;
             transition: 0.3s;
+            margin-top: auto;
         }
 
-        .ver-menu:hover {
+        .btn-pedir:hover {
             background: #d94d0b;
         }
 
-
-        /* =========================
-           LLAMADO A PEDIR
-        ========================= */
-
-        .pedido {
-            background: linear-gradient(135deg, #e85c0c, #f47721);
-            color: white;
-            text-align: center;
-            padding: 45px 20px;
-            margin-top: 60px;
-        }
-
-        .pedido h2 {
-            font-size: 30px;
-            margin-bottom: 10px;
-        }
-
-        .pedido p {
-            margin-bottom: 20px;
-            font-size: 17px;
-        }
-
-        .pedido a {
-            display: inline-block;
-            background: white;
-            color: #e85c0c;
-            padding: 13px 25px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .pedido a:hover {
-            transform: scale(1.05);
-        }
-
-
-        /* =========================
-           INFORMACIÓN DEL NEGOCIO
-        ========================= */
-
-        .info-negocio {
-            padding: 60px 20px;
-            background: #fff3df;
-            text-align: center;
-        }
-
-        .info-negocio h2 {
-            color: #d94d0b;
-            font-size: 32px;
-            margin-bottom: 8px;
-        }
-
-        .subtitulo {
-            color: #795548;
-            margin-bottom: 35px;
-        }
-
-        .info-grid {
+        /* BEBIDAS */
+        .bebidas-lista {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 15px;
             max-width: 1100px;
             margin: auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
         }
 
-        .info-card {
+        .bebida-card {
             background: white;
-            padding: 25px 18px;
-            border-radius: 20px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.10);
-            transition: 0.3s;
-        }
-
-        .info-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .info-icono {
-            font-size: 35px;
-            margin-bottom: 12px;
-        }
-
-        .info-card h3 {
-            color: #e85c0c;
-            font-size: 21px;
-            margin-bottom: 10px;
-        }
-
-        .info-card p {
-            color: #795548;
-            line-height: 1.5;
-            margin-bottom: 15px;
-        }
-
-        .info-card strong {
-            color: #d94d0b;
-            font-size: 17px;
-        }
-
-
-        /* =========================
-           BOTONES INFO
-        ========================= */
-
-        .info-btn {
-            display: inline-block;
-            background: #e85c0c;
-            color: white;
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 14px;
-            transition: 0.3s;
-        }
-
-        .info-btn:hover {
-            background: #d94d0b;
-            transform: scale(1.03);
-        }
-
-        .whatsapp-btn {
-            background: #25D366;
-        }
-
-        .whatsapp-btn:hover {
-            background: #20bd5a;
-        }
-
-
-        /* =========================
-           REDES SOCIALES
-        ========================= */
-
-        .redes {
+            border-radius: 18px;
+            padding: 18px;
             display: flex;
             flex-direction: column;
-            gap: 8px;
-        }
-
-        .red-social {
-            display: block;
-            text-decoration: none;
-            color: #e85c0c;
-            background: #fff3df;
-            padding: 9px;
-            border-radius: 10px;
-            font-weight: bold;
+            align-items: center;
+            text-align: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.09);
             transition: 0.3s;
         }
 
-        .red-social:hover {
-            background: #e85c0c;
-            color: white;
+        .bebida-card:hover {
+            transform: translateY(-4px);
         }
 
+        .bebida-icono {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #fff3df;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+        }
 
-        /* =========================
-           FOOTER
-        ========================= */
+        .bebida-info h3 {
+            color: #e85c0c;
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
 
+        .bebida-info p {
+            color: #795548;
+            font-size: 14px;
+        }
+
+        .bebida-precio {
+            font-size: 23px;
+            font-weight: bold;
+            color: #d94d0b;
+        }
+
+        .btn-pedir-bebida {
+            background: #e85c0c;
+            color: white;
+            text-decoration: none;
+            padding: 9px 15px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: bold;
+            width: 100%;
+        }
+
+        .btn-pedir-bebida:hover {
+            background: #d94d0b;
+        }
+
+        /* FOOTER */
         footer {
             background: #e85c0c;
             color: white;
             text-align: center;
-            padding: 30px 15px;
+            padding: 25px 15px;
+            margin-top: 20px;
         }
 
         footer p {
-            margin: 6px;
+            margin: 5px;
         }
 
-
-        /* =========================
-           WHATSAPP FLOTANTE
-        ========================= */
-
-        .whatsapp-flotante {
+        /* WHATSAPP */
+        .whatsapp {
             position: fixed;
             right: 20px;
             bottom: 20px;
-
-            width: 60px;
-            height: 60px;
-
+            width: 58px;
+            height: 58px;
             background: #25D366;
             color: white;
-
             border-radius: 50%;
-
             display: flex;
-            align-items: center;
             justify-content: center;
-
+            align-items: center;
             text-decoration: none;
-            font-size: 30px;
-
+            font-size: 29px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.25);
-
             z-index: 100;
-
             transition: 0.3s;
         }
 
-        .whatsapp-flotante:hover {
+        .whatsapp:hover {
             transform: scale(1.1);
         }
 
-
-        /* =========================
-           ADAPTACIÓN PARA TABLET
-        ========================= */
-
+        /* TABLET Y CELULAR: TAMBIÉN 3 EN 3 */
         @media (max-width: 900px) {
 
-            .pizza-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .menu-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 10px;
             }
 
-            .info-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .bebidas-lista {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 10px;
             }
 
-        }
-
-
-        /* =========================
-           ADAPTACIÓN PARA CELULAR
-        ========================= */
-
-        @media (max-width: 600px) {
-
-            header {
-                padding: 35px 15px 45px;
+            .pizza-card img,
+            .sin-foto {
+                height: 150px;
             }
 
-            header img {
-                width: 100px;
-                height: 100px;
+            .pizza-info {
+                padding: 10px;
             }
 
-            header h1 {
-                font-size: 29px;
-            }
-
-            header p {
+            .pizza-info h3 {
                 font-size: 16px;
             }
 
-            .botones-header {
-                flex-direction: column;
-                align-items: center;
+            .pizza-info p {
+                font-size: 11px;
+                line-height: 1.3;
+                min-height: 40px;
+                margin-bottom: 8px;
             }
 
-            .boton {
-                width: 90%;
-                max-width: 300px;
+            .precios {
+                gap: 5px;
+                margin-bottom: 8px;
             }
 
-            .bienvenida h2,
-            .destacadas h2,
-            .info-negocio h2 {
-                font-size: 27px;
+            .precio {
+                padding: 6px 2px;
             }
 
-            .pizza-grid {
-                grid-template-columns: 1fr;
+            .precio span {
+                font-size: 9px;
             }
 
-            .pizza-card img {
-                height: 220px;
+            .precio strong {
+                font-size: 13px;
             }
 
-            .info-grid {
-                grid-template-columns: 1fr;
-                max-width: 400px;
+            .btn-pedir {
+                font-size: 11px;
+                padding: 8px 3px;
             }
-
-            .info-card {
-                padding: 22px 15px;
-            }
-
-            .pedido h2 {
-                font-size: 26px;
-            }
-
-            .whatsapp-flotante {
-                width: 55px;
-                height: 55px;
-                right: 15px;
-                bottom: 15px;
-            }
-
         }
 
+        /* CELULAR: 3 EN 3 */
+        @media (max-width: 600px) {
+
+            header {
+                padding: 25px 10px;
+            }
+
+            header h1 {
+                font-size: 24px;
+            }
+
+            header p {
+                font-size: 13px;
+            }
+
+            header img {
+                width: 80px;
+                height: 80px;
+            }
+
+            .volver {
+                padding: 9px 15px;
+                font-size: 13px;
+            }
+
+            .categorias {
+                gap: 8px;
+                padding: 20px 8px 5px;
+            }
+
+            .categoria {
+                padding: 10px 15px;
+                font-size: 13px;
+            }
+
+            .contenido {
+                padding: 0 7px 40px;
+                margin-top: 20px;
+            }
+
+            .titulo-seccion {
+                font-size: 21px;
+                margin-bottom: 18px;
+            }
+
+            .menu-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 6px;
+            }
+
+            .pizza-card {
+                border-radius: 9px;
+            }
+
+            .pizza-card img,
+            .sin-foto {
+                height: 105px;
+            }
+
+            .sin-foto {
+                font-size: 11px;
+                padding: 5px;
+            }
+
+            .pizza-info {
+                padding: 6px;
+            }
+
+            .pizza-info h3 {
+                font-size: 11px;
+                margin-bottom: 4px;
+            }
+
+            .pizza-info p {
+                font-size: 8px;
+                line-height: 1.25;
+                min-height: 34px;
+                margin-bottom: 6px;
+            }
+
+            .precios {
+                gap: 3px;
+                margin-bottom: 6px;
+            }
+
+            .precio {
+                padding: 4px 1px;
+                border-radius: 5px;
+            }
+
+            .precio span {
+                font-size: 6.5px;
+                margin-bottom: 1px;
+            }
+
+            .precio strong {
+                font-size: 9px;
+            }
+
+            .btn-pedir {
+                font-size: 7px;
+                padding: 6px 2px;
+                border-radius: 6px;
+            }
+
+            /* BEBIDAS 3 EN 3 */
+            .bebidas-lista {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 6px;
+            }
+
+            .bebida-card {
+                padding: 7px 4px;
+                border-radius: 9px;
+                gap: 5px;
+            }
+
+            .bebida-icono {
+                width: 38px;
+                height: 38px;
+                font-size: 19px;
+            }
+
+            .bebida-info h3 {
+                font-size: 9px;
+                margin-bottom: 3px;
+            }
+
+            .bebida-info p {
+                font-size: 7px;
+                line-height: 1.2;
+            }
+
+            .bebida-precio {
+                font-size: 13px;
+            }
+
+            .btn-pedir-bebida {
+                font-size: 7px;
+                padding: 6px 2px;
+            }
+
+            .whatsapp {
+                width: 50px;
+                height: 50px;
+                right: 12px;
+                bottom: 12px;
+                font-size: 24px;
+            }
+
+            footer {
+                font-size: 12px;
+            }
+        }
     </style>
 </head>
 
-
 <body>
 
-
-    <!-- =========================
-         ENCABEZADO
-    ========================== -->
-
+    <!-- ENCABEZADO -->
     <header>
 
         <img src="logo.png" alt="Logo La Casa de la Pizza">
@@ -505,337 +554,614 @@
 
         <p>El sabor que siempre quieres repetir</p>
 
-        <div class="botones-header">
-
-            <a href="menu.html" class="boton boton-menu">
-                🍕 Ver menú
-            </a>
-
-            <a
-                href="https://wa.me/51982710420"
-                target="_blank"
-                class="boton boton-whatsapp">
-                📲 Pedir ahora
-            </a>
-
-        </div>
+        <a href="index.html" class="volver">← Volver al inicio</a>
 
     </header>
 
 
+    <!-- CATEGORÍAS -->
+    <div class="categorias">
 
-    <!-- =========================
-         BIENVENIDA
-    ========================== -->
+        <button class="categoria activo"
+            onclick="mostrarCategoria('pizzas', this)">
+            🍕 Pizzas
+        </button>
 
-    <section class="bienvenida">
+        <button class="categoria"
+            onclick="mostrarCategoria('bebidas', this)">
+            🥤 Bebidas
+        </button>
 
-        <h2>¡Bienvenidos a La Casa de la Pizza! 🍕</h2>
-
-        <p>
-            Disfruta nuestras pizzas y bebidas preparadas para que
-            cada momento tenga un sabor especial. Elige tu pizza
-            favorita y haz tu pedido fácilmente por WhatsApp.
-        </p>
-
-    </section>
+    </div>
 
 
+    <!-- ==================== PIZZAS ==================== -->
 
-    <!-- =========================
-         PIZZAS DESTACADAS
-    ========================== -->
+    <section id="pizzas" class="contenido activo">
 
-    <section class="destacadas">
+        <h2 class="titulo-seccion">🍕 Nuestro Menú de Pizzas</h2>
 
-        <h2>🍕 Nuestras pizzas</h2>
-
-        <div class="pizza-grid">
+        <div class="menu-grid">
 
 
-            <!-- HAWAIANA -->
-
+            <!-- 1 HAWAIANA -->
             <div class="pizza-card">
-
-                <img
-                    src="fotos/Hawaiana.JPG"
-                    alt="Pizza Hawaiana">
+                <img src="fotos/Hawaiana.JPG" alt="Pizza Hawaiana">
 
                 <div class="pizza-info">
-
                     <h3>Hawaiana</h3>
+                    <p>Jamón y piña.</p>
 
-                    <p>
-                        Jamón y piña.
-                    </p>
+                    <div class="precios">
+                        <div class="precio"><span>Personal</span><strong>S/35</strong></div>
+                        <div class="precio"><span>Grande</span><strong>S/50</strong></div>
+                        <div class="precio"><span>Familiar</span><strong>S/60</strong></div>
+                        <div class="precio"><span>Extra grande</span><strong>S/95</strong></div>
+                    </div>
 
-                    <a href="menu.html" class="ver-menu">
-                        Ver menú
-                    </a>
-
+                    <a class="btn-pedir" href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20pizza%20Hawaiana">📲 Pedir</a>
                 </div>
-
             </div>
 
 
-
-            <!-- CASA MIX -->
-
+            <!-- 2 VEGETARIANA -->
             <div class="pizza-card">
-
-                <img
-                    src="fotos/Casa-Mix.JPG"
-                    alt="Pizza Casa Mix">
+                <img src="fotos/Vegetariana.JPG" alt="Pizza Vegetariana">
 
                 <div class="pizza-info">
+                    <h3>Vegetariana</h3>
+                    <p>Cebolla, pimentón, tomate, aceituna y champiñones.</p>
 
+                    <div class="precios">
+                        <div class="precio"><span>Personal</span><strong>S/33</strong></div>
+                        <div class="precio"><span>Grande</span><strong>S/48</strong></div>
+                        <div class="precio"><span>Familiar</span><strong>S/58</strong></div>
+                        <div class="precio"><span>Extra grande</span><strong>S/90</strong></div>
+                    </div>
+
+                    <a class="btn-pedir" href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20pizza%20Vegetariana">📲 Pedir</a>
+                </div>
+            </div>
+
+
+            <!-- 3 CHOZA -->
+            <div class="pizza-card">
+                <img src="fotos/Choza.JPG" alt="Pizza Choza">
+
+                <div class="pizza-info">
+                    <h3>Choza</h3>
+                    <p>Choclo, calabresa y cecina.</p>
+
+                    <div class="precios">
+                        <div class="precio"><span>Personal</span><strong>S/35</strong></div>
+                        <div class="precio"><span>Grande</span><strong>S/50</strong></div>
+                        <div class="precio"><span>Familiar</span><strong>S/60</strong></div>
+                        <div class="precio"><span>Extra grande</span><strong>S/91</strong></div>
+                    </div>
+
+                    <a class="btn-pedir" href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20pizza%20Choza">📲 Pedir</a>
+                </div>
+            </div>
+
+
+            <!-- 4 CASA MIX -->
+            <div class="pizza-card">
+                <img src="fotos/Casa-Mix.JPG" alt="Pizza Casa Mix">
+
+                <div class="pizza-info">
                     <h3>Casa Mix</h3>
+                    <p>Jamón, chorizo, salchicha, aceituna, tocino, champiñones y calabresa.</p>
 
-                    <p>
-                        Una deliciosa combinación de ingredientes.
-                    </p>
+                    <div class="precios">
+                        <div class="precio"><span>Personal</span><strong>S/35</strong></div>
+                        <div class="precio"><span>Grande</span><strong>S/50</strong></div>
+                        <div class="precio"><span>Familiar</span><strong>S/60</strong></div>
+                        <div class="precio"><span>Extra grande</span><strong>S/95</strong></div>
+                    </div>
 
-                    <a href="menu.html" class="ver-menu">
-                        Ver menú
-                    </a>
-
+                    <a class="btn-pedir" href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20pizza%20Casa%20Mix">📲 Pedir</a>
                 </div>
-
             </div>
 
 
-
-            <!-- MARGARITA -->
-
+            <!-- 5 PEPERONI -->
             <div class="pizza-card">
-
-                <img
-                    src="fotos/Margarita.JPG"
-                    alt="Pizza Margarita">
+                <img src="fotos/Peperoni.JPG" alt="Pizza con Peperoni">
 
                 <div class="pizza-info">
+                    <h3>Pizza con Peperoni</h3>
+                    <p>Peperoni. Adicional de 1 ingrediente.</p>
 
+                    <div class="precios">
+                        <div class="precio"><span>Personal</span><strong>S/33</strong></div>
+                        <div class="precio"><span>Grande</span><strong>S/48</strong></div>
+                        <div class="precio"><span>Familiar</span><strong>S/58</strong></div>
+                        <div class="precio"><span>Extra grande</span><strong>S/91</strong></div>
+                    </div>
+
+                    <a class="btn-pedir" href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20Pizza%20con%20Peperoni">📲 Pedir</a>
+                </div>
+            </div>
+
+
+            <!-- 6 4 ESTACIONES SIMPLE -->
+            <div class="pizza-card">
+                <img src="fotos/4-Estaciones-Simple.JPG" alt="Pizza 4 Estaciones Simple">
+
+                <div class="pizza-info">
+                    <h3>4 Estaciones Simple</h3>
+                    <p>Jamón, chorizo, salchicha y aceituna. Un ingrediente por cada 1/4.</p>
+
+                    <div class="precios">
+                        <div class="precio"><span>Grande</span><strong>S/50</strong></div>
+                        <div class="precio"><span>Familiar</span><strong>S/60</strong></div>
+                        <div class="precio"><span>Extra grande</span><strong>S/95</strong></div>
+                    </div>
+
+                    <a class="btn-pedir" href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20pizza%204%20Estaciones%20Simple">📲 Pedir</a>
+                </div>
+            </div>
+
+
+            <!-- 7 CASA MIX + MAIZ -->
+            <div class="pizza-card">
+                <img src="fotos/Casa-Mix-Maiz.JPG" alt="Pizza Casa Mix más Maíz">
+
+                <div class="pizza-info">
+                    <h3>Casa Mix + Maíz</h3>
+                    <p>Casa Mix con maíz.</p>
+
+                    <div class="precios">
+                        <div class="precio"><span>Personal</span><strong>S/35</strong></div>
+                        <div class="precio"><span>Grande</span><strong>S/50</strong></div>
+                        <div class="precio"><span>Familiar</span><strong>S/60</strong></div>
+                        <div class="precio"><span>Extra grande</span><strong>S/95</strong></div>
+                    </div>
+
+                    <a class="btn-pedir" href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20pizza%20Casa%20Mix%20%2B%20Maiz">📲 Pedir</a>
+                </div>
+            </div>
+
+
+            <!-- 8 SUPER HAWAIANA -->
+            <div class="pizza-card">
+                <img src="fotos/Super-Hawaiana.JPG" alt="Pizza Super Hawaiana">
+
+                <div class="pizza-info">
+                    <h3>Super Hawaiana</h3>
+                    <p>Jamón, piña y los ingredientes de la casa.</p>
+
+                    <div class="precios">
+                        <div class="precio"><span>Personal</span><strong>S/35</strong></div>
+                        <div class="precio"><span>Grande</span><strong>S/50</strong></div>
+                        <div class="precio"><span>Familiar</span><strong>S/60</strong></div>
+                        <div class="precio"><span>Extra grande</span><strong>S/95</strong></div>
+                    </div>
+
+                    <a class="btn-pedir" href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20pizza%20Super%20Hawaiana">📲 Pedir</a>
+                </div>
+            </div>
+
+
+            <!-- 9 FRUTAS -->
+            <div class="pizza-card">
+                <img src="fotos/Frutas.JPG" alt="Pizza de Frutas">
+
+                <div class="pizza-info">
+                    <h3>Pizza de Frutas</h3>
+                    <p>Plátano, papaya, leche Nestlé y piña.</p>
+
+                    <div class="precios">
+                        <div class="precio"><span>Personal</span><strong>S/35</strong></div>
+                        <div class="precio"><span>Grande</span><strong>S/50</strong></div>
+                        <div class="precio"><span>Familiar</span><strong>S/60</strong></div>
+                        <div class="precio"><span>Extra grande</span><strong>S/91</strong></div>
+                    </div>
+
+                    <a class="btn-pedir" href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20Pizza%20de%20Frutas">📲 Pedir</a>
+                </div>
+            </div>
+
+
+            <!-- 10 MITAD MIXTA FRUTAS -->
+            <div class="pizza-card">
+                <img src="fotos/Frutas-mitad-mixta.JPG" alt="Pizza Mitad Mixta con Frutas">
+
+                <div class="pizza-info">
+                    <h3>Mitad Mixta - Frutas</h3>
+                    <p>Pizza mitad mixta con frutas.</p>
+
+                    <div class="precios">
+                        <div class="precio"><span>Personal</span><strong>S/35</strong></div>
+                        <div class="precio"><span>Grande</span><strong>S/50</strong></div>
+                        <div class="precio"><span>Familiar</span><strong>S/60</strong></div>
+                        <div class="precio"><span>Extra grande</span><strong>S/91</strong></div>
+                    </div>
+
+                    <a class="btn-pedir" href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20pizza%20Mitad%20Mixta%20con%20Frutas">📲 Pedir</a>
+                </div>
+            </div>
+
+
+            <!-- 11 4 ESTACIONES ESPECIAL -->
+            <div class="pizza-card">
+                <img src="fotos/4-Estaciones-Especial.JPG" alt="Pizza 4 Estaciones Especial">
+
+                <div class="pizza-info">
+                    <h3>4 Estaciones Especial</h3>
+                    <p>Casa Mix, Hawaiana, Choza y otras combinaciones.</p>
+
+                    <div class="precios">
+                        <div class="precio"><span>Grande</span><strong>S/53</strong></div>
+                        <div class="precio"><span>Familiar</span><strong>S/63</strong></div>
+                        <div class="precio"><span>Extra grande</span><strong>S/98</strong></div>
+                    </div>
+
+                    <a class="btn-pedir" href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20pizza%204%20Estaciones%20Especial">📲 Pedir</a>
+                </div>
+            </div>
+
+
+            <!-- 12 LOMO SALTADO -->
+            <div class="pizza-card">
+                <img src="fotos/Lomo-saltado.JPG" alt="Pizza de Lomo Saltado">
+
+                <div class="pizza-info">
+                    <h3>Lomo Saltado</h3>
+                    <p>Pizza de lomo saltado.</p>
+
+                    <div class="precios">
+                        <div class="precio"><span>Grande</span><strong>S/53</strong></div>
+                        <div class="precio"><span>Familiar</span><strong>S/63</strong></div>
+                        <div class="precio"><span>Extra grande</span><strong>S/98</strong></div>
+                    </div>
+
+                    <a class="btn-pedir" href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20pizza%20Lomo%20Saltado">📲 Pedir</a>
+                </div>
+            </div>
+
+
+            <!-- 13 MARGARITA -->
+            <div class="pizza-card">
+                <img src="fotos/Margarita.JPG" alt="Pizza Margarita">
+
+                <div class="pizza-info">
                     <h3>Margarita</h3>
+                    <p>Clásica pizza Margarita.</p>
 
-                    <p>
-                        Una clásica pizza para disfrutar.
-                    </p>
+                    <div class="precios">
+                        <div class="precio"><span>Personal</span><strong>S/35</strong></div>
+                        <div class="precio"><span>Grande</span><strong>S/50</strong></div>
+                        <div class="precio"><span>Familiar</span><strong>S/60</strong></div>
+                        <div class="precio"><span>Extra grande</span><strong>S/87</strong></div>
+                    </div>
 
-                    <a href="menu.html" class="ver-menu">
-                        Ver menú
-                    </a>
-
+                    <a class="btn-pedir" href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20pizza%20Margarita">📲 Pedir</a>
                 </div>
-
             </div>
 
+
+            <!-- 14 BORDE CON QUESO -->
+            <div class="pizza-card">
+                <img src="fotos/Borde-con-queso.JPG" alt="Pizza Borde con Queso">
+
+                <div class="pizza-info">
+                    <h3>Borde con Queso</h3>
+                    <p>Pizza con delicioso borde relleno de queso.</p>
+
+                    <div class="precios">
+                        <div class="precio"><span>Mediana</span><strong>S/60</strong></div>
+                        <div class="precio"><span>Familiar</span><strong>S/70</strong></div>
+                        <div class="precio"><span>Extra grande</span><strong>S/110</strong></div>
+                    </div>
+
+                    <a class="btn-pedir" href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20pizza%20Borde%20con%20Queso">📲 Pedir</a>
+                </div>
+            </div>
+
+
+            <!-- 15 GAROTIÑA -->
+            <div class="pizza-card">
+                <img src="fotos/Garotiña.JPG" alt="Pizza Garotiña">
+
+                <div class="pizza-info">
+                    <h3>Garotiña</h3>
+                    <p>Piña y calabresa.</p>
+
+                    <div class="precios">
+                        <div class="precio"><span>Personal</span><strong>S/33</strong></div>
+                        <div class="precio"><span>Mediana</span><strong>S/48</strong></div>
+                        <div class="precio"><span>Grande</span><strong>S/58</strong></div>
+                        <div class="precio"><span>Familiar</span><strong>S/87</strong></div>
+                    </div>
+
+                    <a class="btn-pedir" href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20pizza%20Garotiña">📲 Pedir</a>
+                </div>
+            </div>
+
+
+            <!-- 16 AMERICANA -->
+            <div class="pizza-card">
+                <img src="fotos/Americana.JPG" alt="Pizza Americana">
+
+                <div class="pizza-info">
+                    <h3>Americana</h3>
+                    <p>Jamón y queso.</p>
+
+                    <div class="precios">
+                        <div class="precio"><span>Personal</span><strong>S/33</strong></div>
+                        <div class="precio"><span>Mediana</span><strong>S/48</strong></div>
+                        <div class="precio"><span>Grande</span><strong>S/58</strong></div>
+                        <div class="precio"><span>Familiar</span><strong>S/90</strong></div>
+                    </div>
+
+                    <a class="btn-pedir" href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20pizza%20Americana">📲 Pedir</a>
+                </div>
+            </div>
+
+
+            <!-- 17 PICANTE -->
+            <div class="pizza-card">
+                <img src="fotos/Picante.JPG" alt="Pizza Picante">
+
+                <div class="pizza-info">
+                    <h3>Picante</h3>
+                    <p>Chorizo, cebolla y rocoto.</p>
+
+                    <div class="precios">
+                        <div class="precio"><span>Personal</span><strong>S/33</strong></div>
+                        <div class="precio"><span>Mediana</span><strong>S/48</strong></div>
+                        <div class="precio"><span>Grande</span><strong>S/58</strong></div>
+                        <div class="precio"><span>Familiar</span><strong>S/87</strong></div>
+                    </div>
+
+                    <a class="btn-pedir" href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20pizza%20Picante">📲 Pedir</a>
+                </div>
+            </div>
+
+
+            <!-- 18 ECONOMICO -->
+            <div class="pizza-card">
+                <div class="sin-foto">🍕 Económico</div>
+
+                <div class="pizza-info">
+                    <h3>Económico</h3>
+                    <p>Jamón, chorizo, salchicha, tocino, aceituna y champiñones.</p>
+
+                    <div class="precios">
+                        <div class="precio"><span>Personal</span><strong>S/33</strong></div>
+                        <div class="precio"><span>Mediana</span><strong>S/48</strong></div>
+                        <div class="precio"><span>Grande</span><strong>S/58</strong></div>
+                        <div class="precio"><span>Familiar</span><strong>S/88</strong></div>
+                    </div>
+
+                    <a class="btn-pedir" href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20pizza%20Economico">📲 Pedir</a>
+                </div>
+            </div>
+
+
+            <!-- 19 CASA TROPICAL -->
+            <div class="pizza-card">
+                <div class="sin-foto">🍕 Casa Tropical</div>
+
+                <div class="pizza-info">
+                    <h3>Casa Tropical</h3>
+                    <p>Choclo, jamón y cebolla.</p>
+
+                    <div class="precios">
+                        <div class="precio"><span>Personal</span><strong>S/33</strong></div>
+                        <div class="precio"><span>Mediana</span><strong>S/48</strong></div>
+                        <div class="precio"><span>Grande</span><strong>S/58</strong></div>
+                        <div class="precio"><span>Familiar</span><strong>S/90</strong></div>
+                    </div>
+
+                    <a class="btn-pedir" href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20pizza%20Casa%20Tropical">📲 Pedir</a>
+                </div>
+            </div>
+
+
+            <!-- 20 A MI GUSTO -->
+            <div class="pizza-card">
+                <div class="sin-foto">🍕 A Mi Gusto</div>
+
+                <div class="pizza-info">
+                    <h3>A Mi Gusto</h3>
+                    <p>Crea tu propia combinación con hasta 4 ingredientes.</p>
+
+                    <div class="precios">
+                        <div class="precio"><span>Grande</span><strong>S/52</strong></div>
+                        <div class="precio"><span>Familiar</span><strong>S/62</strong></div>
+                        <div class="precio"><span>Extra grande</span><strong>S/98</strong></div>
+                    </div>
+
+                    <a class="btn-pedir" href="https://wa.me/51982710420?text=Hola%2C%20quiero%20una%20pizza%20A%20Mi%20Gusto%20con%204%20ingredientes">📲 Pedir</a>
+                </div>
+            </div>
+
+
+            <!-- 21 PIZZA DE FILETE -->
+            <div class="pizza-card">
+                <div class="sin-foto">🍕 Pizza de Filete</div>
+
+                <div class="pizza-info">
+                    <h3>Pizza de Filete</h3>
+                    <p>Filete, salchicha, cebolla y tomate.</p>
+
+                    <div class="precios">
+                        <div class="precio"><span>Mediana</span><strong>S/50</strong></div>
+                        <div class="precio"><span>Grande</span><strong>S/60</strong></div>
+                        <div class="precio"><span>Familiar</span><strong>S/93</strong></div>
+                    </div>
+
+                    <a class="btn-pedir" href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20Pizza%20de%20Filete">📲 Pedir</a>
+                </div>
+            </div>
 
         </div>
-
     </section>
 
 
+    <!-- ==================== BEBIDAS ==================== -->
 
-    <!-- =========================
-         PEDIDO
-    ========================== -->
+    <section id="bebidas" class="contenido">
 
-    <section class="pedido">
+        <h2 class="titulo-seccion">🥤 Bebidas</h2>
 
-        <h2>🍕 ¿Ya sabes cuál quieres?</h2>
+        <div class="bebidas-lista">
 
-        <p>
-            Mira nuestro menú y haz tu pedido directamente por WhatsApp.
-        </p>
+            <!-- 1 -->
+            <div class="bebida-card">
+                <div class="bebida-icono">🥤</div>
 
-        <a
-            href="https://wa.me/51982710420"
-            target="_blank">
-            📲 Pedir por WhatsApp
-        </a>
-
-    </section>
-
-
-
-    <!-- =========================
-         INFORMACIÓN DEL NEGOCIO
-    ========================== -->
-
-    <section class="info-negocio">
-
-        <h2>📍 Visítanos</h2>
-
-        <p class="subtitulo">
-            Encuéntranos o contáctanos para realizar tu pedido
-        </p>
-
-
-        <div class="info-grid">
-
-
-            <!-- DIRECCIÓN -->
-
-            <div class="info-card">
-
-                <div class="info-icono">
-                    📍
+                <div class="bebida-info">
+                    <h3>Gaseosa Medio Litro</h3>
+                    <p>Inca Kola o Coca-Cola.</p>
                 </div>
 
-                <h3>Dirección</h3>
+                <div class="bebida-precio">S/5</div>
 
-                <p>
-                    Pasaje El Paraíso - Samaira<br>
-                    Puerto Maldonado
-                </p>
-
-                <a
-                    href="https://www.google.com/maps/search/?api=1&query=Pasaje%20El%20Paraiso%20Samaira%20Puerto%20Maldonado"
-                    target="_blank"
-                    class="info-btn">
-                    📍 Ver ubicación
+                <a class="btn-pedir-bebida"
+                   href="https://wa.me/51982710420?text=Hola%2C%20quiero%20una%20Gaseosa%20de%20medio%20litro">
+                    📲 Pedir
                 </a>
-
             </div>
 
 
+            <!-- 2 -->
+            <div class="bebida-card">
+                <div class="bebida-icono">🥤</div>
 
-            <!-- HORARIO -->
-
-            <div class="info-card">
-
-                <div class="info-icono">
-                    🕐
+                <div class="bebida-info">
+                    <h3>Gaseosa 1 Litro</h3>
+                    <p>Inca Kola o Coca-Cola.</p>
                 </div>
 
-                <h3>Horario</h3>
+                <div class="bebida-precio">S/10</div>
 
-                <p>
-                    Todos los días
-                </p>
-
-                <strong>
-                    5:30 p. m. - 11:00 p. m.
-                </strong>
-
-            </div>
-
-
-
-            <!-- WHATSAPP -->
-
-            <div class="info-card">
-
-                <div class="info-icono">
-                    📲
-                </div>
-
-                <h3>Pedidos</h3>
-
-                <p>
-                    Haz tu pedido directamente por WhatsApp
-                </p>
-
-                <a
-                    href="https://wa.me/51982710420"
-                    target="_blank"
-                    class="info-btn whatsapp-btn">
-                    📲 Pedir por WhatsApp
+                <a class="btn-pedir-bebida"
+                   href="https://wa.me/51982710420?text=Hola%2C%20quiero%20una%20Gaseosa%20de%201%20litro">
+                    📲 Pedir
                 </a>
-
             </div>
 
 
+            <!-- 3 -->
+            <div class="bebida-card">
+                <div class="bebida-icono">🥤</div>
 
-            <!-- REDES -->
-
-            <div class="info-card">
-
-                <div class="info-icono">
-                    📱
+                <div class="bebida-info">
+                    <h3>Gaseosa 2 Litros</h3>
+                    <p>Inca Kola o Coca-Cola.</p>
                 </div>
 
-                <h3>Redes sociales</h3>
+                <div class="bebida-precio">S/15</div>
 
-                <p>
-                    Síguenos y descubre nuestras novedades
-                </p>
-
-                <div class="redes">
-
-                    <!-- CAMBIAR # POR LOS ENLACES REALES -->
-
-                    <a
-                       
-    href="https://www.facebook.com/share/19StQaLbq1/"
-    target="_blank"
-    class="red-social">
-    📘 Facebook
-</a>
-                    </a>
-                    <a
-                       
-    href="https://www.tiktok.com/@la.casa.de.la.pizza.pem?is_from_webapp=1&sender_device=pc"
-    target="_blank"
-    class="red-social">
-    🎵 TikTok
-</a><a
-    href="https://www.instagram.com/la_casa_de_la_pizza_1245?stkn=cmppem5wYnhsYzR2"
-    target="_blank"
-    class="red-social">
-    📸 Instagram
-</a>
-                    </a>
-
-                </div>
-
+                <a class="btn-pedir-bebida"
+                   href="https://wa.me/51982710420?text=Hola%2C%20quiero%20una%20Gaseosa%20de%202%20litros">
+                    📲 Pedir
+                </a>
             </div>
 
+
+            <!-- 4 -->
+            <div class="bebida-card">
+                <div class="bebida-icono">💧</div>
+
+                <div class="bebida-info">
+                    <h3>Agua Medio Litro</h3>
+                    <p>Agua embotellada.</p>
+                </div>
+
+                <div class="bebida-precio">S/3.50</div>
+
+                <a class="btn-pedir-bebida"
+                   href="https://wa.me/51982710420?text=Hola%2C%20quiero%20un%20Agua%20de%20medio%20litro">
+                    📲 Pedir
+                </a>
+            </div>
+
+
+            <!-- 5 -->
+            <div class="bebida-card">
+                <div class="bebida-icono">🥤</div>
+
+                <div class="bebida-info">
+                    <h3>Chicha Morada - Vaso</h3>
+                    <p>Refrescante chicha morada.</p>
+                </div>
+
+                <div class="bebida-precio">S/3</div>
+
+                <a class="btn-pedir-bebida"
+                   href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20Chicha%20Morada%20en%20vaso">
+                    📲 Pedir
+                </a>
+            </div>
+
+
+            <!-- 6 -->
+            <div class="bebida-card">
+                <div class="bebida-icono">🍹</div>
+
+                <div class="bebida-info">
+                    <h3>Chicha Morada - Jarra</h3>
+                    <p>Jarra de chicha morada para compartir.</p>
+                </div>
+
+                <div class="bebida-precio">S/10</div>
+
+                <a class="btn-pedir-bebida"
+                   href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20Jarra%20de%20Chicha%20Morada">
+                    📲 Pedir
+                </a>
+            </div>
 
         </div>
-
     </section>
 
 
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
+    <!-- FOOTER -->
     <footer>
-
-        <p>
-            <strong>🍕 La Casa de la Pizza</strong>
-        </p>
-
-        <p>
-            El sabor que siempre quieres repetir
-        </p>
-
-        <p>
-            📍 Pasaje El Paraíso - Samaira, Puerto Maldonado
-        </p>
-
-        <p>
-            🕐 5:30 p. m. - 11:00 p. m.
-        </p>
-
+        <p><strong>🍕 La Casa de la Pizza</strong></p>
+        <p>El sabor que siempre quieres repetir</p>
+        <p>📲 Pedidos por WhatsApp</p>
     </footer>
 
 
-
-    <!-- =========================
-         WHATSAPP FLOTANTE
-    ========================== -->
-
+    <!-- WHATSAPP -->
     <a
         href="https://wa.me/51982710420"
+        class="whatsapp"
         target="_blank"
-        class="whatsapp-flotante"
         title="Pedir por WhatsApp">
         💬
     </a>
 
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        function mostrarCategoria(categoria, boton) {
+
+            document.querySelectorAll(".contenido").forEach(function(seccion) {
+                seccion.classList.remove("activo");
+            });
+
+            document.querySelectorAll(".categoria").forEach(function(botonCategoria) {
+                botonCategoria.classList.remove("activo");
+            });
+
+            document.getElementById(categoria).classList.add("activo");
+
+            boton.classList.add("activo");
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+    </script>
 
 </body>
 </html>
