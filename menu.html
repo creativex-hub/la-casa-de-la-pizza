@@ -98,7 +98,7 @@
         /* CONTENIDO */
         .contenido {
             display: none;
-            max-width: 1200px;
+            max-width: 1250px;
             margin: 30px auto;
             padding: 0 20px 50px;
         }
@@ -114,10 +114,10 @@
             margin-bottom: 30px;
         }
 
-        /* GRID DE PIZZAS */
+        /* GRID 3 X 3 */
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 25px;
         }
 
@@ -128,6 +128,8 @@
             overflow: hidden;
             box-shadow: 0 6px 18px rgba(0,0,0,0.10);
             transition: 0.3s;
+            display: flex;
+            flex-direction: column;
         }
 
         .pizza-card:hover {
@@ -142,8 +144,25 @@
             display: block;
         }
 
+        /* TARJETAS SIN FOTO */
+        .sin-foto {
+            height: 220px;
+            background: linear-gradient(135deg, #fff0d9, #ffe0bd);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 25px;
+            color: #e85c0c;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
         .pizza-info {
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
 
         .pizza-info h3 {
@@ -198,6 +217,7 @@
             border-radius: 12px;
             font-weight: bold;
             transition: 0.3s;
+            margin-top: auto;
         }
 
         .btn-pedir:hover {
@@ -315,6 +335,14 @@
             transform: scale(1.1);
         }
 
+        /* TABLET */
+        @media (max-width: 900px) {
+
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         /* MÓVIL */
         @media (max-width: 600px) {
 
@@ -327,7 +355,12 @@
                 height: 90px;
             }
 
-            .pizza-card img {
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pizza-card img,
+            .sin-foto {
                 height: 200px;
             }
 
@@ -357,6 +390,7 @@
 
     <!-- ENCABEZADO -->
     <header>
+
         <img src="logo.png" alt="Logo La Casa de la Pizza">
 
         <h1>🍕 La Casa de la Pizza</h1>
@@ -364,6 +398,7 @@
         <p>El sabor que siempre quieres repetir</p>
 
         <a href="index.html" class="volver">← Volver al inicio</a>
+
     </header>
 
 
@@ -392,7 +427,7 @@
         <div class="menu-grid">
 
 
-            <!-- HAWAIANA -->
+            <!-- 1 HAWAIANA -->
             <div class="pizza-card">
 
                 <img src="fotos/Hawaiana.JPG" alt="Pizza Hawaiana">
@@ -436,7 +471,7 @@
             </div>
 
 
-            <!-- VEGETARIANA -->
+            <!-- 2 VEGETARIANA -->
             <div class="pizza-card">
 
                 <img src="fotos/Vegetariana.JPG" alt="Pizza Vegetariana">
@@ -480,7 +515,7 @@
             </div>
 
 
-            <!-- CHOZA -->
+            <!-- 3 CHOZA -->
             <div class="pizza-card">
 
                 <img src="fotos/Choza.JPG" alt="Pizza Choza">
@@ -524,7 +559,7 @@
             </div>
 
 
-            <!-- CASA MIX -->
+            <!-- 4 CASA MIX -->
             <div class="pizza-card">
 
                 <img src="fotos/Casa-Mix.JPG" alt="Pizza Casa Mix">
@@ -568,7 +603,7 @@
             </div>
 
 
-            <!-- PEPERONI -->
+            <!-- 5 PEPERONI -->
             <div class="pizza-card">
 
                 <img src="fotos/Peperoni.JPG" alt="Pizza con Peperoni">
@@ -612,7 +647,7 @@
             </div>
 
 
-            <!-- 4 ESTACIONES SIMPLE -->
+            <!-- 6 4 ESTACIONES SIMPLE -->
             <div class="pizza-card">
 
                 <img src="fotos/4-Estaciones-Simple.JPG" alt="Pizza 4 Estaciones Simple">
@@ -651,7 +686,7 @@
             </div>
 
 
-            <!-- CASA MIX + MAÍZ -->
+            <!-- 7 CASA MIX + MAÍZ -->
             <div class="pizza-card">
 
                 <img src="fotos/Casa-Mix-Maiz.JPG" alt="Pizza Casa Mix más Maíz">
@@ -694,49 +729,52 @@
                 </div>
             </div>
 
-<!-- SUPER HAWAIANA -->
-<div class="pizza-card">
 
-    <img src="fotos/Super-Hawaiana.JPG" alt="Pizza Super Hawaiana">
+            <!-- 8 SUPER HAWAIANA -->
+            <div class="pizza-card">
 
-    <div class="pizza-info">
+                <img src="fotos/Super-Hawaiana.JPG" alt="Pizza Super Hawaiana">
 
-        <h3>Super Hawaiana</h3>
+                <div class="pizza-info">
 
-        <p>Jamón, piña y los ingredientes de la casa.</p>
+                    <h3>Super Hawaiana</h3>
 
-        <div class="precios">
+                    <p>Jamón, piña y los ingredientes de la casa.</p>
 
-            <div class="precio">
-                <span>Personal</span>
-                <strong>S/35</strong>
+                    <div class="precios">
+
+                        <div class="precio">
+                            <span>Personal</span>
+                            <strong>S/35</strong>
+                        </div>
+
+                        <div class="precio">
+                            <span>Grande</span>
+                            <strong>S/50</strong>
+                        </div>
+
+                        <div class="precio">
+                            <span>Familiar</span>
+                            <strong>S/60</strong>
+                        </div>
+
+                        <div class="precio">
+                            <span>Extra grande</span>
+                            <strong>S/95</strong>
+                        </div>
+
+                    </div>
+
+                    <a class="btn-pedir"
+                       href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20pizza%20Super%20Hawaiana">
+                        📲 Pedir
+                    </a>
+
+                </div>
             </div>
 
-            <div class="precio">
-                <span>Grande</span>
-                <strong>S/50</strong>
-            </div>
 
-            <div class="precio">
-                <span>Familiar</span>
-                <strong>S/60</strong>
-            </div>
-
-            <div class="precio">
-                <span>Extra grande</span>
-                <strong>S/95</strong>
-            </div>
-
-        </div>
-
-        <a class="btn-pedir"
-           href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20pizza%20Super%20Hawaiana">
-            📲 Pedir
-        </a>
-
-    </div>
-</div>
-            <!-- FRUTAS -->
+            <!-- 9 FRUTAS -->
             <div class="pizza-card">
 
                 <img src="fotos/Frutas.JPG" alt="Pizza de Frutas">
@@ -780,10 +818,10 @@
             </div>
 
 
-            <!-- MITAD MIXTA - Frutas  -->
+            <!-- 10 MITAD MIXTA - FRUTAS -->
             <div class="pizza-card">
 
-                <img src="fotos/Frutas-mitad-mixta.JPG" alt="Pizza Mitad Mixta-Frutas">
+                <img src="fotos/Frutas-mitad-mixta.JPG" alt="Pizza Mitad Mixta con Frutas">
 
                 <div class="pizza-info">
 
@@ -824,7 +862,7 @@
             </div>
 
 
-            <!-- 4 ESTACIONES ESPECIAL -->
+            <!-- 11 4 ESTACIONES ESPECIAL -->
             <div class="pizza-card">
 
                 <img src="fotos/4-Estaciones-Especial.JPG" alt="Pizza 4 Estaciones Especial">
@@ -863,7 +901,7 @@
             </div>
 
 
-            <!-- LOMO SALTADO -->
+            <!-- 12 LOMO SALTADO -->
             <div class="pizza-card">
 
                 <img src="fotos/Lomo-saltado.JPG" alt="Pizza de Lomo Saltado">
@@ -872,7 +910,7 @@
 
                     <h3>Lomo Saltado</h3>
 
-                    <p>Pizza de lomo saltado. Precio según tamaño.</p>
+                    <p>Pizza de lomo saltado.</p>
 
                     <div class="precios">
 
@@ -902,7 +940,7 @@
             </div>
 
 
-            <!-- MARGARITA -->
+            <!-- 13 MARGARITA -->
             <div class="pizza-card">
 
                 <img src="fotos/Margarita.JPG" alt="Pizza Margarita">
@@ -946,7 +984,7 @@
             </div>
 
 
-            <!-- BORDE CON QUESO -->
+            <!-- 14 BORDE CON QUESO -->
             <div class="pizza-card">
 
                 <img src="fotos/Borde-con-queso.JPG" alt="Pizza Borde con Queso">
@@ -985,147 +1023,460 @@
             </div>
 
 
+            <!-- 15 GAROTIÑA -->
+            <div class="pizza-card">
+
+                <img src="fotos/Garotiña.JPG" alt="Pizza Garotiña">
+
+                <div class="pizza-info">
+
+                    <h3>Garotiña</h3>
+
+                    <p>Piña y calabresa.</p>
+
+                    <div class="precios">
+
+                        <div class="precio">
+                            <span>Personal</span>
+                            <strong>S/33</strong>
+                        </div>
+
+                        <div class="precio">
+                            <span>Mediana</span>
+                            <strong>S/48</strong>
+                        </div>
+
+                        <div class="precio">
+                            <span>Grande</span>
+                            <strong>S/58</strong>
+                        </div>
+
+                        <div class="precio">
+                            <span>Familiar</span>
+                            <strong>S/87</strong>
+                        </div>
+
+                    </div>
+
+                    <a class="btn-pedir"
+                       href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20pizza%20Garotiña">
+                        📲 Pedir
+                    </a>
+
+                </div>
+            </div>
+
+
+            <!-- 16 AMERICANA -->
+            <div class="pizza-card">
+
+                <img src="fotos/Americana.JPG" alt="Pizza Americana">
+
+                <div class="pizza-info">
+
+                    <h3>Americana</h3>
+
+                    <p>Jamón y queso.</p>
+
+                    <div class="precios">
+
+                        <div class="precio">
+                            <span>Personal</span>
+                            <strong>S/33</strong>
+                        </div>
+
+                        <div class="precio">
+                            <span>Mediana</span>
+                            <strong>S/48</strong>
+                        </div>
+
+                        <div class="precio">
+                            <span>Grande</span>
+                            <strong>S/58</strong>
+                        </div>
+
+                        <div class="precio">
+                            <span>Familiar</span>
+                            <strong>S/90</strong>
+                        </div>
+
+                    </div>
+
+                    <a class="btn-pedir"
+                       href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20pizza%20Americana">
+                        📲 Pedir
+                    </a>
+
+                </div>
+            </div>
+
+
+            <!-- 17 PICANTE -->
+            <div class="pizza-card">
+
+                <img src="fotos/Picante.JPG" alt="Pizza Picante">
+
+                <div class="pizza-info">
+
+                    <h3>Picante</h3>
+
+                    <p>Chorizo, cebolla y rocoto.</p>
+
+                    <div class="precios">
+
+                        <div class="precio">
+                            <span>Personal</span>
+                            <strong>S/33</strong>
+                        </div>
+
+                        <div class="precio">
+                            <span>Mediana</span>
+                            <strong>S/48</strong>
+                        </div>
+
+                        <div class="precio">
+                            <span>Grande</span>
+                            <strong>S/58</strong>
+                        </div>
+
+                        <div class="precio">
+                            <span>Familiar</span>
+                            <strong>S/87</strong>
+                        </div>
+
+                    </div>
+
+                    <a class="btn-pedir"
+                       href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20pizza%20Picante">
+                        📲 Pedir
+                    </a>
+
+                </div>
+            </div>
+
+
+            <!-- 18 ECONÓMICO -->
+            <div class="pizza-card">
+
+                <div class="sin-foto">
+                    🍕 Económico
+                </div>
+
+                <div class="pizza-info">
+
+                    <h3>Económico</h3>
+
+                    <p>Jamón, chorizo, salchicha, tocino, aceituna y champiñones.</p>
+
+                    <div class="precios">
+
+                        <div class="precio">
+                            <span>Personal</span>
+                            <strong>S/33</strong>
+                        </div>
+
+                        <div class="precio">
+                            <span>Mediana</span>
+                            <strong>S/48</strong>
+                        </div>
+
+                        <div class="precio">
+                            <span>Grande</span>
+                            <strong>S/58</strong>
+                        </div>
+
+                        <div class="precio">
+                            <span>Familiar</span>
+                            <strong>S/88</strong>
+                        </div>
+
+                    </div>
+
+                    <a class="btn-pedir"
+                       href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20pizza%20Economico">
+                        📲 Pedir
+                    </a>
+
+                </div>
+            </div>
+
+
+            <!-- 19 CASA TROPICAL -->
+            <div class="pizza-card">
+
+                <div class="sin-foto">
+                    🍕 Casa Tropical
+                </div>
+
+                <div class="pizza-info">
+
+                    <h3>Casa Tropical</h3>
+
+                    <p>Choclo, jamón y cebolla.</p>
+
+                    <div class="precios">
+
+                        <div class="precio">
+                            <span>Personal</span>
+                            <strong>S/33</strong>
+                        </div>
+
+                        <div class="precio">
+                            <span>Mediana</span>
+                            <strong>S/48</strong>
+                        </div>
+
+                        <div class="precio">
+                            <span>Grande</span>
+                            <strong>S/58</strong>
+                        </div>
+
+                        <div class="precio">
+                            <span>Familiar</span>
+                            <strong>S/90</strong>
+                        </div>
+
+                    </div>
+
+                    <a class="btn-pedir"
+                       href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20pizza%20Casa%20Tropical">
+                        📲 Pedir
+                    </a>
+
+                </div>
+            </div>
+
+
+            <!-- 20 A MI GUSTO -->
+            <div class="pizza-card">
+
+                <div class="sin-foto">
+                    🍕 A Mi Gusto
+                </div>
+
+                <div class="pizza-info">
+
+                    <h3>A Mi Gusto</h3>
+
+                    <p>Crea tu propia combinación con hasta 4 ingredientes.</p>
+
+                    <div class="precios">
+
+                        <div class="precio">
+                            <span>Grande</span>
+                            <strong>S/52</strong>
+                        </div>
+
+                        <div class="precio">
+                            <span>Familiar</span>
+                            <strong>S/62</strong>
+                        </div>
+
+                        <div class="precio">
+                            <span>Extra grande</span>
+                            <strong>S/98</strong>
+                        </div>
+
+                    </div>
+
+                    <a class="btn-pedir"
+                       href="https://wa.me/51982710420?text=Hola%2C%20quiero%20una%20pizza%20A%20Mi%20Gusto%20con%204%20ingredientes">
+                        📲 Pedir
+                    </a>
+
+                </div>
+            </div>
+
+
+            <!-- 21 PIZZA DE FILETE -->
+            <div class="pizza-card">
+
+                <div class="sin-foto">
+                    🍕 Pizza de Filete
+                </div>
+
+                <div class="pizza-info">
+
+                    <h3>Pizza de Filete</h3>
+
+                    <p>Filete, salchicha, cebolla y tomate.</p>
+
+                    <div class="precios">
+
+                        <div class="precio">
+                            <span>Mediana</span>
+                            <strong>S/50</strong>
+                        </div>
+
+                        <div class="precio">
+                            <span>Grande</span>
+                            <strong>S/60</strong>
+                        </div>
+
+                        <div class="precio">
+                            <span>Familiar</span>
+                            <strong>S/93</strong>
+                        </div>
+
+                    </div>
+
+                    <a class="btn-pedir"
+                       href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20Pizza%20de%20Filete">
+                        📲 Pedir
+                    </a>
+
+                </div>
+            </div>
+
+
         </div>
     </section>
 
 
-    
-    <!-- ==================== BEBIDAS ==================== -->    
-<div class="bebidas-lista">
+    <!-- ==================== BEBIDAS ==================== -->
 
-    <!-- GASEOSA MEDIO LITRO -->
-    <div class="bebida-card">
+    <section id="bebidas" class="contenido">
 
-        <div class="bebida-icono">🥤</div>
+        <h2 class="titulo-seccion">🥤 Bebidas</h2>
 
-        <div class="bebida-info">
-            <h3>Gaseosa Medio Litro</h3>
-            <p>Inca Kola o Coca-Cola.</p>
+        <div class="bebidas-lista">
+
+
+            <!-- GASEOSA MEDIO LITRO -->
+            <div class="bebida-card">
+
+                <div class="bebida-icono">🥤</div>
+
+                <div class="bebida-info">
+                    <h3>Gaseosa Medio Litro</h3>
+                    <p>Inca Kola o Coca-Cola.</p>
+                </div>
+
+                <div class="bebida-precio">
+                    S/5
+                </div>
+
+                <a class="btn-pedir-bebida"
+                   href="https://wa.me/51982710420?text=Hola%2C%20quiero%20una%20Gaseosa%20de%20medio%20litro">
+                    📲 Pedir
+                </a>
+
+            </div>
+
+
+            <!-- GASEOSA 1 LITRO -->
+            <div class="bebida-card">
+
+                <div class="bebida-icono">🥤</div>
+
+                <div class="bebida-info">
+                    <h3>Gaseosa 1 Litro</h3>
+                    <p>Inca Kola o Coca-Cola.</p>
+                </div>
+
+                <div class="bebida-precio">
+                    S/10
+                </div>
+
+                <a class="btn-pedir-bebida"
+                   href="https://wa.me/51982710420?text=Hola%2C%20quiero%20una%20Gaseosa%20de%201%20litro">
+                    📲 Pedir
+                </a>
+
+            </div>
+
+
+            <!-- GASEOSA 2 LITROS -->
+            <div class="bebida-card">
+
+                <div class="bebida-icono">🥤</div>
+
+                <div class="bebida-info">
+                    <h3>Gaseosa 2 Litros</h3>
+                    <p>Inca Kola o Coca-Cola.</p>
+                </div>
+
+                <div class="bebida-precio">
+                    S/15
+                </div>
+
+                <a class="btn-pedir-bebida"
+                   href="https://wa.me/51982710420?text=Hola%2C%20quiero%20una%20Gaseosa%20de%202%20litros">
+                    📲 Pedir
+                </a>
+
+            </div>
+
+
+            <!-- AGUA MEDIO LITRO -->
+            <div class="bebida-card">
+
+                <div class="bebida-icono">💧</div>
+
+                <div class="bebida-info">
+                    <h3>Agua Medio Litro</h3>
+                    <p>Agua embotellada.</p>
+                </div>
+
+                <div class="bebida-precio">
+                    S/3.50
+                </div>
+
+                <a class="btn-pedir-bebida"
+                   href="https://wa.me/51982710420?text=Hola%2C%20quiero%20un%20Agua%20de%20medio%20litro">
+                    📲 Pedir
+                </a>
+
+            </div>
+
+
+            <!-- CHICHA VASO -->
+            <div class="bebida-card">
+
+                <div class="bebida-icono">🥤</div>
+
+                <div class="bebida-info">
+                    <h3>Chicha Morada - Vaso</h3>
+                    <p>Refrescante chicha morada.</p>
+                </div>
+
+                <div class="bebida-precio">
+                    S/3
+                </div>
+
+                <a class="btn-pedir-bebida"
+                   href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20Chicha%20Morada%20en%20vaso">
+                    📲 Pedir
+                </a>
+
+            </div>
+
+
+            <!-- CHICHA JARRA -->
+            <div class="bebida-card">
+
+                <div class="bebida-icono">🍹</div>
+
+                <div class="bebida-info">
+                    <h3>Chicha Morada - Jarra</h3>
+                    <p>Jarra de chicha morada para compartir.</p>
+                </div>
+
+                <div class="bebida-precio">
+                    S/10
+                </div>
+
+                <a class="btn-pedir-bebida"
+                   href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20Jarra%20de%20Chicha%20Morada">
+                    📲 Pedir
+                </a>
+
+            </div>
+
+
         </div>
 
-        <div class="bebida-precio">
-            S/5
-        </div>
-
-        <a class="btn-pedir-bebida"
-           href="https://wa.me/51982710420?text=Hola%2C%20quiero%20una%20Gaseosa%20de%20medio%20litro">
-            📲 Pedir
-        </a>
-
-    </div>
-
-
-    <!-- GASEOSA 1 LITRO -->
-    <div class="bebida-card">
-
-        <div class="bebida-icono">🥤</div>
-
-        <div class="bebida-info">
-            <h3>Gaseosa 1 Litro</h3>
-            <p>Inca Kola o Coca-Cola.</p>
-        </div>
-
-        <div class="bebida-precio">
-            S/10
-        </div>
-
-        <a class="btn-pedir-bebida"
-           href="https://wa.me/51982710420?text=Hola%2C%20quiero%20una%20Gaseosa%20de%201%20litro">
-            📲 Pedir
-        </a>
-
-    </div>
-
-
-    <!-- GASEOSA 2 LITROS -->
-    <div class="bebida-card">
-
-        <div class="bebida-icono">🥤</div>
-
-        <div class="bebida-info">
-            <h3>Gaseosa 2 Litros</h3>
-            <p>Inca Kola o Coca-Cola.</p>
-        </div>
-
-        <div class="bebida-precio">
-            S/15
-        </div>
-
-        <a class="btn-pedir-bebida"
-           href="https://wa.me/51982710420?text=Hola%2C%20quiero%20una%20Gaseosa%20de%202%20litros">
-            📲 Pedir
-        </a>
-
-    </div>
-
-
-    <!-- AGUA MEDIO LITRO -->
-    <div class="bebida-card">
-
-        <div class="bebida-icono">💧</div>
-
-        <div class="bebida-info">
-            <h3>Agua Medio Litro</h3>
-            <p>Agua embotellada.</p>
-        </div>
-
-        <div class="bebida-precio">
-            S/3.50
-        </div>
-
-        <a class="btn-pedir-bebida"
-           href="https://wa.me/51982710420?text=Hola%2C%20quiero%20un%20Agua%20de%20medio%20litro">
-           📲 Pedir
-
-
-        </a>
-
-    </div>
-
-    <!-- CHICHA VASO -->
-<div class="bebida-card">
-
-    <div class="bebida-icono">🥤</div>
-
-    <div class="bebida-info">
-        <h3>Chicha Morada - Vaso</h3>
-        <p>Refrescante chicha morada.</p>
-    </div>
-
-    <div class="bebida-precio">
-        S/3
-    </div>
-
-    <a class="btn-pedir-bebida"
-       href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20Chicha%20Morada%20en%20vaso">
-        📲 Pedir
-    </a>
-
-</div>
-
-
-<!-- CHICHA JARRA -->
-<div class="bebida-card">
-
-    <div class="bebida-icono">🍹</div>
-
-    <div class="bebida-info">
-        <h3>Chicha Morada - Jarra</h3>
-        <p>Jarra de chicha morada para compartir.</p>
-    </div>
-
-    <div class="bebida-precio">
-        S/10
-    </div>
-
-    <a class="btn-pedir-bebida"
-       href="https://wa.me/51982710420?text=Hola%2C%20quiero%20pedir%20una%20Jarra%20de%20Chicha%20Morada">
-        📲 Pedir
-    </a>
-
-</div>
-</section>
-
+    </section>
 
 
     <!-- FOOTER -->
